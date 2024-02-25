@@ -1,9 +1,9 @@
 # server.py
 from flask import Flask, request, jsonify
 from predict_model import predict
-
+from flask_cors import CORS
 app = Flask(__name__)
-
+CORS(app)
 @app.route('/predict', methods=['POST'])
 def make_prediction():
     try:
@@ -18,4 +18,4 @@ def make_prediction():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=5000)

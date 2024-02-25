@@ -10,7 +10,7 @@ let nav=[
   {name:"Home" , link:"/"},
   {name:"Blogs", link:"/blogs"},
   {name:"About Us" , link:"/about"},
-  {name:"Contact Us" , link:"/contactus"},
+  {name:"Contact Us" , link:"/contact"},
 
 ]
 

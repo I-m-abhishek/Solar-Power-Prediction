@@ -6,11 +6,11 @@ import {
   Bars3Icon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-let nav=[
-  {name:"Home" , link:"/"},
-  {name:"Blogs", link:"/blogs"},
-  {name:"About Us" , link:"/about"},
-  {name:"Contact Us" , link:"/contact"},
+let navitem=[
+  {id:1 ,name:"Home" , link:"/"},
+  {id:2 ,name:"Key Insights", link:"/features"},
+  {id:3 ,name:"About Us" , link:"/about"},
+  {id:4 ,name:"Contact Us" , link:"/contact"},
 
 ]
 
@@ -42,12 +42,14 @@ export default function Example() {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           {
-          nav.map((nav)=>{
-            return <>
-          <Link key={nav.name} href={nav.link} className="    hover:text-emerald-500  font-semibold text-1xl leading-6 mx-6 text-gray-900 " >
-            {nav.name}
+          navitem.map((navitem)=>{
+           
+            return <Link  key={navitem.id} href={navitem.link} className="    hover:text-emerald-500  font-semibold text-1xl leading-6 mx-6 text-gray-900 " >
+            {navitem.name}
           </Link>
-            </>
+        
+           
+           
           })
           }
           
@@ -78,15 +80,17 @@ export default function Example() {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {
-                  nav.map((nav)=>{
-                  return <>
-                  <Link
-                  href={nav.link}
+                  navitem.map((navitem)=>{
+                  return <Link
+                  href={navitem.link}
+                  key={navitem.id}
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
-                  {nav.name}
+                  {navitem.name}
                   </Link>
-                    </>
+                
+                  
+                   
                   })
                 }
                

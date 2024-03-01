@@ -61,6 +61,7 @@ function Page() {
       const prediction_data = data.prediction[0][0];
       setPredicted_power(prediction_data);
       console.log(prediction_data);
+      console.log(Math.round(prediction_data*100)/100);
       if (response.ok) {
         const form = dataform.current;
         if (form) {
@@ -111,14 +112,15 @@ function Page() {
         }}
       >
         <div className="flex items-center justify-center">
-          <div className="p-1 sm:p-4 sm:pb-2 md:p-4">
+          <div className=" min-w-10 sm:min-w-24">
+            {/* rotation of image 360 */}
             <img
-              className="h-10 w-10 sm:h-24 sm:w-24"
+              className=" h-10 w-10 sm:h-24 sm:w-24 animate-spin"
               src="../sun-hd.png"
               alt="Sun"
             />
           </div>
-          <p className="font-extrabold text-3xl sm:text-5xl md:text-7xl md:text-left lg:text-center  p-1 sm:p-4 text-transparent bg-clip-text bg-gradient-to-tl from-white to-amber-300/90">
+          <p className="animate-pulse font-extrabold text-3xl sm:text-5xl md:text-7xl md:text-left lg:text-center  p-1 sm:p-4 text-transparent bg-clip-text bg-gradient-to-tl from-white to-amber-300/90">
             Solar Power Predictor
           </p>
         </div>
@@ -165,7 +167,7 @@ function Page() {
           </div>
         </div>
 
-        <div className="p-2 sm:p-10 sm:pt-2 sm:pb-2">
+        <div className="p-2 sm:p-10 sm:pt-2 sm:pb-2 animate-bounce">
           <button className="p-2 m-1 font-mono bg-blue-600 hover:bg-blue-900 rounded-md font-extrabold text-white">
             {" "}
             <a href="#dataformcontainer">
@@ -174,8 +176,8 @@ function Page() {
           </button>
         </div>
        
-          <div className="sm:p-5 sm:ml-10 sm:mr-10  sm:mb-5 rounded-md bg-[#a8ddf3]">
-          <p className="font-extrabold font-mono text-2xl">Why Choose Solar Power Predictor?</p>
+          <div className="m-1 sm:p-5 sm:ml-10 sm:mr-10  sm:mb-5 rounded-md bg-[#a8ddf3]">
+          <p className="font-extrabold font-mono text-2xl pl-1">Why Choose Solar Power Predictor?</p>
           <p className="font-mono p-2">    
           <span className="font-bold">Precision and Reliability:</span> Trust in our precise and reliable solar
           forecasts, crafted through advanced algorithms and meticulous data
@@ -196,130 +198,130 @@ function Page() {
 
 
         <div id='dataformcontainer' className="md:p-36 md:pt-5 bg-gradient-to-bl from-yellow-200 via-red-200 to-white">
-        <p className="font-extrabold text-5xl text-transparent bg-clip-text bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoonwIpLUSSsQqs4uPRjGcrwTbIbZemS33Mw&usqp=CAU')]">
+        <p className=" pl-2 leading-normal font-extrabold text-3xl sm:text-s4l md:text-5xl text-transparent bg-clip-text bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoonwIpLUSSsQqs4uPRjGcrwTbIbZemS33Mw&usqp=CAU')]">
           Try Solar Power Predictor !!!!!!!!!
         </p>
         <form ref={dataform} id="dataform" onSubmit={handleSubmit}>    
         
-        <div className="mt-10 grid grid-cols-3 gap-x-6 gap-y-8 sm:grid-cols-4">
-        <div className="">
+        <div className="p-1 pl-2 pr-2 mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-3">
+        <div className="col-span-1 md:col-span-2">
           <label htmlFor="temperature_2_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">Temperature 2 meter above ground</label>
           <div className="mt-2">
-            <input value={formData.temperature_2_m_above_gnd} onChange={handleChange} type="number" name="temperature_2_m_above_gnd" id="temperature_2_m_above_gnd" className="w-full  p-1  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
+            <input value={formData.temperature_2_m_above_gnd} onChange={handleChange} type="number" name="temperature_2_m_above_gnd" id="temperature_2_m_above_gnd" className="w-full  p-1  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder ="in °C (eg: 20) "/>
           </div> 
         </div>
         <div className="">
           <label htmlFor="relative_humidity_2_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">Relative Humidity 2 meter above ground</label>
           <div className="mt-2">
-            <input value={formData.relative_humidity_2_m_above_gnd} onChange={handleChange} type="number" name="relative_humidity_2_m_above_gnd" id="relative_humidity_2_m_above_gnd" className="w-full rounded-md border-0 py-1.5 text-gray-900  p-1 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='janesmith'/>
+            <input value={formData.relative_humidity_2_m_above_gnd} onChange={handleChange} type="number" name="relative_humidity_2_m_above_gnd" id="relative_humidity_2_m_above_gnd" className="w-full rounded-md border-0 py-1.5 text-gray-900  p-1 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='in percentage (eg: 50)'/>
           </div> 
         </div>
         <div className="">
-          <label htmlFor="mean_sea_level_pressure_MSL" className=" text-sm font-medium leading-6 text-gray-900">mean_sea_level_pressure_MSL</label>
+          <label htmlFor="mean_sea_level_pressure_MSL" className=" text-sm font-medium leading-6 text-gray-900">Mean sea level pressure</label>
           <div className="mt-2">
-            <input value={formData.mean_sea_level_pressure_MSL} onChange={handleChange} type="number" name="mean_sea_level_pressure_MSL" id="mean_sea_level_pressure_MSL" className="w-full   p-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
+            <input value={formData.mean_sea_level_pressure_MSL} onChange={handleChange} type="number" name="mean_sea_level_pressure_MSL" id="mean_sea_level_pressure_MSL" className="w-full   p-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in hPa or mb (eg: 1015)'/>
+          </div> 
+        </div>
+        <div className="col-span-1 md:col-span-2">
+          <label htmlFor="total_precipitation_sfc" className=" text-sm font-medium leading-6 text-gray-900">Total precipitation at the surface</label>
+          <div className="mt-2">
+            <input value={formData.total_precipitation_sfc} onChange={handleChange} type="number" name="total_precipitation_sfc" id="total_precipitation_sfc" className="w-full   p-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in mm (eg: 0)'/>
+          </div> 
+        </div>
+        <div className="col-span-1 md:col-span-2">
+          <label htmlFor="snowfall_amount_sfc" className=" text-sm font-medium leading-6 text-gray-900">Snowfall amount at the surface</label>
+          <div className="mt-2">
+            <input value={formData.snowfall_amount_sfc} onChange={handleChange} type="number" name="snowfall_amount_sfc" id="snowfall_amount_sfc" className="w-full rounded-md border-0 py-1.5 p-1  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in cm (eg: 0)'/>
           </div> 
         </div>
         <div className="">
-          <label htmlFor="total_precipitation_sfc" className=" text-sm font-medium leading-6 text-gray-900">total_precipitation_sfc</label>
+          <label htmlFor="total_cloud_cover_sfc" className=" text-sm font-medium leading-6 text-gray-900">Total cloud cover at the surface</label>
           <div className="mt-2">
-            <input value={formData.total_precipitation_sfc} onChange={handleChange} type="number" name="total_precipitation_sfc" id="total_precipitation_sfc" className="w-full   p-1 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
+            <input value={formData.total_cloud_cover_sfc} onChange={handleChange} type="number" name="total_cloud_cover_sfc" id="total_cloud_cover_sfc" className="w-full rounded-md border-0 py-1.5  p-1  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='in percentage (eg: 10)' />
           </div> 
         </div>
         <div className="">
-          <label htmlFor="snowfall_amount_sfc" className=" text-sm font-medium leading-6 text-gray-900">snowfall_amount_sfc</label>
+          <label htmlFor="high_cloud_cover_high_cld_lay" className=" text-sm font-medium leading-6 text-gray-900">High-level cloud cover in the high cloud layer</label>
           <div className="mt-2">
-            <input value={formData.snowfall_amount_sfc} onChange={handleChange} type="number" name="snowfall_amount_sfc" id="snowfall_amount_sfc" className="w-full rounded-md border-0 py-1.5 p-1  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
+            <input value={formData.high_cloud_cover_high_cld_lay} onChange={handleChange} type="number" name="high_cloud_cover_high_cld_lay" id="high_cloud_cover_high_cld_lay" className="w-full rounded-md border-0 py-1.5 text-gray-900 p-1  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in percentage (eg: 10)'/>
+          </div> 
+        </div>
+        <div className="col-span-1 md:col-span-2">
+          <label htmlFor="medium_cloud_cover_mid_cld_lay" className=" text-sm font-medium leading-6 text-gray-900">Medium-level cloud cover in the mid-level cloud layer</label>
+          <div className="mt-2">
+            <input value={formData.medium_cloud_cover_mid_cld_lay} onChange={handleChange} type="number" name="medium_cloud_cover_mid_cld_lay" id="medium_cloud_cover_mid_cld_lay" className="w-full rounded-md border-0 py-1.5 text-gray-900  p-1  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='in percentage (eg: 10)' />
+          </div> 
+        </div>
+        <div className="col-span-1 md:col-span-2">
+          <label htmlFor="low_cloud_cover_low_cld_lay" className=" text-sm font-medium leading-6 text-gray-900">Low-level cloud cover in the low cloud layer</label>
+          <div className="mt-2">
+            <input value={formData.low_cloud_cover_low_cld_lay} onChange={handleChange} type="number" name="low_cloud_cover_low_cld_lay" id="low_cloud_cover_low_cld_lay" className="w-full  p-1  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='in percentage (eg: 10)'/>
           </div> 
         </div>
         <div className="">
-          <label htmlFor="total_cloud_cover_sfc" className=" text-sm font-medium leading-6 text-gray-900">total_cloud_cover_sfc</label>
+          <label htmlFor="shortwave_radiation_backwards_sfc" className=" text-sm font-medium leading-6 text-gray-900">Shortwave radiation at the surface</label>
           <div className="mt-2">
-            <input value={formData.total_cloud_cover_sfc} onChange={handleChange} type="number" name="total_cloud_cover_sfc" id="total_cloud_cover_sfc" className="w-full rounded-md border-0 py-1.5  p-1  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='janesmith' />
+            <input value={formData.shortwave_radiation_backwards_sfc} onChange={handleChange} type="number" name="shortwave_radiation_backwards_sfc" id="shortwave_radiation_backwards_sfc" className="w-full rounded-md border-0 py-1.5 text-gray-900  p-1 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in W/m² (eg: 400)'/>
           </div> 
         </div>
         <div className="">
-          <label htmlFor="high_cloud_cover_high_cld_lay" className=" text-sm font-medium leading-6 text-gray-900">high_cloud_cover_high_cld_lay</label>
+          <label htmlFor="wind_speed_10_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">Wind speed at 10 meters above the ground</label>
           <div className="mt-2">
-            <input value={formData.high_cloud_cover_high_cld_lay} onChange={handleChange} type="number" name="high_cloud_cover_high_cld_lay" id="high_cloud_cover_high_cld_lay" className="w-full rounded-md border-0 py-1.5 text-gray-900 p-1  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
+            <input value={formData.titleimgurl} onChange={handleChange} type="number" name="wind_speed_10_m_above_gnd" id="wind_speed_10_m_above_gnd" className="w-full rounded-md border-0  p-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in m/s (eg: 10)'/>
+          </div> 
+        </div>
+        <div className="col-span-1 md:col-span-2">
+          <label htmlFor="wind_direction_10_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">Wind direction at 10 meters above the ground</label>
+          <div className="mt-2">
+            <input value={formData.wind_direction_10_m_above_gnd} onChange={handleChange} type="number" name="wind_direction_10_m_above_gnd" id="wind_direction_10_m_above_gnd" className="w-full rounded-md border-0 py-1.5 text-gray-900  p-1 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='in Degrees (eg: 100)' />
+          </div> 
+        </div>
+        <div className="col-span-1 md:col-span-2">
+          <label htmlFor="wind_speed_80_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">Wind speed at 80 meters above the ground</label>
+          <div className="mt-2">
+            <input value={formData.titleimgurl} onChange={handleChange} type="number" name="wind_speed_80_m_above_gnd" id="wind_speed_80_m_above_gnd" className="w-full rounded-md border-0  p-1  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in m/s (eg: 10)'/>
           </div> 
         </div>
         <div className="">
-          <label htmlFor="medium_cloud_cover_mid_cld_lay" className=" text-sm font-medium leading-6 text-gray-900">medium_cloud_cover_mid_cld_lay</label>
+          <label htmlFor="wind_direction_80_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">Wind direction at 80 meters above the ground</label>
           <div className="mt-2">
-            <input value={formData.medium_cloud_cover_mid_cld_lay} onChange={handleChange} type="number" name="medium_cloud_cover_mid_cld_lay" id="medium_cloud_cover_mid_cld_lay" className="w-full rounded-md border-0 py-1.5 text-gray-900  p-1  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='janesmith' />
+            <input value={formData.wind_direction_80_m_above_gnd} onChange={handleChange} type="number" name="wind_direction_80_m_above_gnd" id="wind_direction_80_m_above_gnd" className="w-full rounded-md border-0 py-1.5 text-gray-900  p-1  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='in Degrees (eg: 100)' />
           </div> 
         </div>
         <div className="">
-          <label htmlFor="low_cloud_cover_low_cld_lay" className=" text-sm font-medium leading-6 text-gray-900">low_cloud_cover_low_cld_lay</label>
+          <label htmlFor="wind_speed_900_mb" className=" text-sm font-medium leading-6 text-gray-900">Wind speed at 900 millibars (mb) pressure level</label>
           <div className="mt-2">
-            <input value={formData.low_cloud_cover_low_cld_lay} onChange={handleChange} type="number" name="low_cloud_cover_low_cld_lay" id="low_cloud_cover_low_cld_lay" className="w-full  p-1  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='janesmith'/>
+            <input value={formData.wind_speed_900_mb} onChange={handleChange} type="number" name="wind_speed_900_mb" id="wind_speed_900_mb" className="w-full rounded-md border-0  p-1  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='in m/s (eg: 10)' />
+          </div> 
+        </div>
+        <div className="col-span-1 md:col-span-2">
+          <label htmlFor="wind_direction_900_mb" className=" text-sm font-medium leading-6 text-gray-900">Wind direction at 900 millibars (mb) pressure level</label>
+          <div className="mt-2">
+            <input value={formData.wind_direction_900_mb} onChange={handleChange} type="number" name="wind_direction_900_mb" id="wind_direction_900_mb" className="w-full rounded-md border-0 py-1.5  p-1  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='in Degrees (eg: 100)' />
+          </div> 
+        </div>
+        <div className="col-span-1 md:col-span-2">
+          <label htmlFor="wind_gust_10_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">Wind gust at 10 meters above the ground</label>
+          <div className="mt-2">
+            <input value={formData.wind_gust_10_m_above_gnd} onChange={handleChange} type="number" name="wind_gust_10_m_above_gnd" id="wind_gust_10_m_above_gnd" className="  p-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in m/s (eg: 15)'/>
           </div> 
         </div>
         <div className="">
-          <label htmlFor="shortwave_radiation_backwards_sfc" className=" text-sm font-medium leading-6 text-gray-900">shortwave_radiation_backwards_sfc</label>
+          <label htmlFor="angle_of_incidence" className=" text-sm font-medium leading-6 text-gray-900">Angle of incidence</label>
           <div className="mt-2">
-            <input value={formData.shortwave_radiation_backwards_sfc} onChange={handleChange} type="number" name="shortwave_radiation_backwards_sfc" id="shortwave_radiation_backwards_sfc" className="w-full rounded-md border-0 py-1.5 text-gray-900  p-1 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
+            <input value={formData.angle_of_incidence} onChange={handleChange} type="number" name="angle_of_incidence" id="angle_of_incidence" className="w-full rounded-md border-0 py-1.5  p-1  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in Degrees (eg: 100)'/>
           </div> 
         </div>
         <div className="">
-          <label htmlFor="wind_speed_10_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">wind_speed_10_m_above_gnd</label>
+          <label htmlFor="zenith" className=" text-sm font-medium leading-6 text-gray-900">Solar zenith angle</label>
           <div className="mt-2">
-            <input value={formData.titleimgurl} onChange={handleChange} type="number" name="wind_speed_10_m_above_gnd" id="wind_speed_10_m_above_gnd" className="w-full rounded-md border-0  p-1 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
+            <input value={formData.zenith} onChange={handleChange} type="number" name="zenith" id="zenith" className=" p-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in Degrees (eg: 100)'/>
           </div> 
         </div>
-        <div className="">
-          <label htmlFor="wind_direction_10_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">wind_direction_10_m_above_gnd</label>
+        <div className="col-span-1 md:col-span-2">
+          <label htmlFor="azimuth" className=" text-sm font-medium leading-6 text-gray-900">Solar azimuth angle</label>
           <div className="mt-2">
-            <input value={formData.wind_direction_10_m_above_gnd} onChange={handleChange} type="number" name="wind_direction_10_m_above_gnd" id="wind_direction_10_m_above_gnd" className="w-full rounded-md border-0 py-1.5 text-gray-900  p-1 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='janesmith' />
-          </div> 
-        </div>
-        <div className="">
-          <label htmlFor="wind_speed_80_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">wind_speed_80_m_above_gnd</label>
-          <div className="mt-2">
-            <input value={formData.titleimgurl} onChange={handleChange} type="number" name="wind_speed_80_m_above_gnd" id="wind_speed_80_m_above_gnd" className="w-full rounded-md border-0  p-1  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
-          </div> 
-        </div>
-        <div className="">
-          <label htmlFor="wind_direction_80_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">wind_direction_80_m_above_gnd</label>
-          <div className="mt-2">
-            <input value={formData.wind_direction_80_m_above_gnd} onChange={handleChange} type="number" name="wind_direction_80_m_above_gnd" id="wind_direction_80_m_above_gnd" className="w-full rounded-md border-0 py-1.5 text-gray-900  p-1  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='janesmith' />
-          </div> 
-        </div>
-        <div className="">
-          <label htmlFor="wind_speed_900_mb" className=" text-sm font-medium leading-6 text-gray-900">wind_speed_900_mb</label>
-          <div className="mt-2">
-            <input value={formData.wind_speed_900_mb} onChange={handleChange} type="number" name="wind_speed_900_mb" id="wind_speed_900_mb" className="w-full rounded-md border-0  p-1  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='janesmith' />
-          </div> 
-        </div>
-        <div className="">
-          <label htmlFor="wind_direction_900_mb" className=" text-sm font-medium leading-6 text-gray-900">wind_direction_900_mb</label>
-          <div className="mt-2">
-            <input value={formData.wind_direction_900_mb} onChange={handleChange} type="number" name="wind_direction_900_mb" id="wind_direction_900_mb" className="w-full rounded-md border-0 py-1.5  p-1  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " placeholder='janesmith' />
-          </div> 
-        </div>
-        <div className="">
-          <label htmlFor="wind_gust_10_m_above_gnd" className=" text-sm font-medium leading-6 text-gray-900">wind_gust_10_m_above_gnd</label>
-          <div className="mt-2">
-            <input value={formData.wind_gust_10_m_above_gnd} onChange={handleChange} type="number" name="wind_gust_10_m_above_gnd" id="wind_gust_10_m_above_gnd" className="  p-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
-          </div> 
-        </div>
-        <div className="">
-          <label htmlFor="angle_of_incidence" className=" text-sm font-medium leading-6 text-gray-900">angle_of_incidence</label>
-          <div className="mt-2">
-            <input value={formData.angle_of_incidence} onChange={handleChange} type="number" name="angle_of_incidence" id="angle_of_incidence" className="w-full rounded-md border-0 py-1.5  p-1  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
-          </div> 
-        </div>
-        <div className="">
-          <label htmlFor="zenith" className=" text-sm font-medium leading-6 text-gray-900">zenith</label>
-          <div className="mt-2">
-            <input value={formData.zenith} onChange={handleChange} type="number" name="zenith" id="zenith" className=" p-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
-          </div> 
-        </div>
-        <div className="">
-          <label htmlFor="azimuth" className=" text-sm font-medium leading-6 text-gray-900">azimuth</label>
-          <div className="mt-2">
-            <input value={formData.azimuth} onChange={handleChange} type="number" name="azimuth" id="azimuth" className="p-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='janesmith'/>
+            <input value={formData.azimuth} onChange={handleChange} type="number" name="azimuth" id="azimuth" className="p-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6  " placeholder='in Degrees (eg: 100)'/>
           </div> 
         </div>
 
@@ -327,11 +329,11 @@ function Page() {
           
 
 
-        <button type='submit' className="p-1 mt-4 font-mono bg-blue-600 hover:bg-blue-900 rounded-md font-extrabold text-white">Generated Power</button>
+        <button type='submit' className="p-1 pl-2 pr-2 m-2 font-mono bg-blue-600 hover:bg-blue-900 rounded-md font-extrabold text-white">Generated Power</button>
           </form>
         
-        <p className={ `${generated_visibility} `+ 'p-1 pl-0 sm:p-5 sm:pl-0 font-semibold text-4xl font-mono' }> { !predicted_power ? "Generating..." : `The Generated Power is : ${predicted_power}`}</p>
-        <button type='submit' onClick={reset_generation} className={`${generated_visibility} `+  " p-1 mt-4 font-mono bg-blue-600 hover:bg-blue-900 rounded-md font-extrabold text-white"}>Reset</button>
+        <p className={ `${generated_visibility} `+ ' p-1 pl-2 pr-2 m-2sm:p-5 sm:pl-2 font-semibold text-4xl font-mono' }> { !predicted_power ? "Generating..." : `The Generated Power is : ${Math.round(((isNaN(predicted_power) || (predicted_power < 0 ))? 0 : predicted_power)*100)/100} Watts per day`}</p>
+        <button type='submit' onClick={reset_generation} className={`${generated_visibility} `+  "p-1 pl-2 pr-2 m-2 mt-4 font-mono bg-blue-600 hover:bg-blue-900 rounded-md font-extrabold text-white"}>Reset</button>
         
 
         </div>

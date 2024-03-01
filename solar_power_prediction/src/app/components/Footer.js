@@ -47,10 +47,15 @@ const Footer = () => {
                     </div> 
                     <div className="p-1">
                      <form className="flex p-0.5" action="">
+                        <div className="flex flex-col sm:flex-row">
+
+                       <div className="">     
                         <label htmlFor="email-address" className="sr-only">Email Address</label>
                         <input value={subscriberemail} onChange={(e)=>{setSubscriberemail(e.target.value)}} className=" text-white rounded-sm shadow-inner shadow-gray-600 pl-3 pr-3 pt-1 pb-1 bg-[#ffffff] hover:bg-[#111010] bg-opacity-10 ring-[#cfcaca] ring-inset" type="email" name="email-address" id="email-address" autoComplete="email" placeholder="Enter your email" required/>
-                        <div className="flex-shrink-0 ml-3">
+                        </div>  
+                        <div className="flex-shrink-0  sm:ml-3 mt-2 sm:mt-0">
                          <button onClick={dosubmit} type="submit" className="w-full bg-blue-500 hover:text-white hover:bg-blue-700 font-semibold pl-3 pr-3 pt-1 pb-1 rounded-sm flex items-center justify-center">Subscribe</button>
+                        </div>
                         </div>
                      </form>
                     </div>

@@ -42,16 +42,30 @@ const Footer = () => {
                 <div></div>
                 <div className="flex-col sm:flex sm:flex-row sm:pt-4 sm:mt-2 sm:justify-between sm:items-center">
                     <div className="p-1">
-                    <h3 className="text-white ">Subscribe to our Blogs</h3>
-                    <p className="text-[#d1d5db] ">Learn about the best coding articels here.</p>
+                    <h3 className="text-white ">Subscribe to our Page</h3>
+                    <p className="text-[#d1d5db] ">Discover the Power of Solar: Illuminate Your Understanding with our Solar Power Predictor!</p>
                     </div> 
                     <div className="p-1">
-                     <form className="flex p-0.5" action="">
+                     <form className="flex p-0.5" method="POST">
                         <div className="flex flex-col sm:flex-row">
 
                        <div className="">     
-                        <label htmlFor="email-address" className="sr-only">Email Address</label>
-                        <input value={subscriberemail} onChange={(e)=>{setSubscriberemail(e.target.value)}} className=" text-white rounded-sm shadow-inner shadow-gray-600 pl-3 pr-3 pt-1 pb-1 bg-[#ffffff] hover:bg-[#111010] bg-opacity-10 ring-[#cfcaca] ring-inset" type="email" name="email-address" id="email-address" autoComplete="email" placeholder="Enter your email" required/>
+            <label htmlFor="email" className="sr-only">
+              Email Address
+            </label>
+              <input
+                required
+                type="email"
+                name="email"
+                id="email"
+                autoComplete="email"
+                placeholder="Enter your email"
+                value={subscriberemail}
+                onChange={(e)=>{setSubscriberemail(e.target.value)}}
+                className="text-white rounded-sm shadow-inner shadow-gray-600 pl-3 pr-3 pt-1 pb-1 bg-[#ffffff] hover:bg-[#111010] bg-opacity-10 ring-[#cfcaca] ring-inset"
+              />
+            
+        
                         </div>  
                         <div className="flex-shrink-0  sm:ml-3 mt-2 sm:mt-0">
                          <button onClick={dosubmit} type="submit" className="w-full bg-blue-500 hover:text-white hover:bg-blue-700 font-semibold pl-3 pr-3 pt-1 pb-1 rounded-sm flex items-center justify-center">Subscribe</button>
@@ -138,7 +152,7 @@ const Footer = () => {
                             </svg>
                         </Link>
                     </div>
-                    <p className="order-1 text-[#b3bfd5] ">© 2024 Coding Blogs, Inc. All rights reserved.</p>
+                    <p className="order-1 text-[#b3bfd5] ">© 2024 Solar Power Predictor, Inc. All rights reserved.</p>
                 </div>
             </div>
         </>

@@ -79,13 +79,13 @@ function contact() {
             ' url("../contact-bg.jpg")',
         }}
       >
-      <div className=" sm:pt-6 md:pt-8 mx-auto max-w-3xl text-center">
+      <div data-aos="fade-down" className=" sm:pt-6 md:pt-8 mx-auto max-w-3xl text-center">
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 sm:text-4xl">Let's Connect</h2>
         <p className="mt-2 text-2xl leading-8 font-semibold text-gray-600">
         Get in Touch: Connect with Us for Solar Solutions and Assistance!
         </p>
       </div>
-        <div className=' group grid perspective-800   transform-style-3d  '>
+        <div data-aos="fade-up" className=' group grid perspective-800   transform-style-3d  '>
         <div className= {` w-full rounded-md p-2 sm:p-4 mx-auto mt-16 mb-8 max-w-xl sm:mt-20 backdrop-blur-md border-2 border-[rgba(255,255,255,0.2)]  bg-white/20 row-start-1 row-end-1 col-start-1 col-end-1 backface-hidden transform transition duration-[1.2s]    ${flipped ? 'rotate-y-180' : " " } `}>
        <form onSubmit={handleSubmit} method="POST" className=" ">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">

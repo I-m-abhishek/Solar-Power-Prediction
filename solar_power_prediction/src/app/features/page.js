@@ -1,10 +1,19 @@
-import React from "react";
-
+'use client';
+import {React, useEffect }from "react";
+import AOS from 'aos';
 function features() {
+  useEffect(() => {
+    AOS.init({
+         duration: 800,
+         once: false,
+       })
+ }, [])  
+
     const feature_imp = {"Temperature at 2 meters above the ground":-0.0831202095,"Relative humidity at 2 meters above the ground":-0.1060344323,"Mean sea level pressure":0.1176043104,"Total precipitation at the surface":-0.0019499833,"Snowfall amount at the surface":0.0122035206,"Total cloud cover at the surface":-0.0853682636,"High-level cloud cover in the high cloud layer":-0.0275538812,"Medium-level cloud cover in the mid-level cloud layer":-0.0449632463,"Low-level cloud cover in the low cloud layer":-0.0450913885,"Shortwave radiation at the surface":0.3800936371,"Wind speed at 10 meters above the ground":0.0,"Wind direction at 10 meters above the ground":0.0105151165,"Wind speed at 80 meters above the ground":0.0538507705,"Wind direction at 80 meters above the ground":0.0150801662,"Wind speed at 900 millibars (mb) pressure level":-0.106695277,"Wind direction at 900 millibars (mb) pressure level":0.0,"Wind gust at 10 meters above the ground ":-0.01625386,"Angle of incidence":-0.4405263372,"Solar zenith angle":-0.1431061976,"Solar azimuth angle":-0.4310704873};
   return (
     <>
-     <div className="bg-cover p-2 sm:p-24 sm:pt-1 sm:pb-1 flex items-center w-full justify-center "
+     <div data-aos="fade-right"
+      className="bg-cover p-2 sm:p-24 sm:pt-1 sm:pb-1 flex items-center w-full justify-center "
         style={{
           // linear-gradient(rgba(135, 80, 156, 0.7), rgba(135, 80, 156, 0.7)),
           backgroundImage:
@@ -21,9 +30,10 @@ function features() {
             Solar Power Predictor
           </p>
         </div>
-      <div className="bg-[#ebf2fc] sm:p-16 md:p-28 lg:p-36 lg:pt-1 md:pt-1 sm:pt-1 sm:pb-3 md:pb-5 lg:pb-10 font-mono">
-          <p className="sm:p-2 sm:mt-2 rounded-md   text-4xl font-bold text-center text-white bg-[#25335b]">About the Model </p>
-        <div className="bg-[#cddcf661] p-1 sm:p-3 sm:pt-0 rounded-md">
+      <div  className="bg-[#ebf2fc]  sm:p-16 md:p-28 lg:p-36 lg:pt-1 md:pt-1 sm:pt-1 sm:pb-3 md:pb-5 lg:pb-10 font-mono">
+          <p data-aos="fade-left"
+      className="sm:p-2 sm:mt-2 rounded-md   text-4xl font-bold text-center text-white bg-[#25335b]">About the Model </p>
+        <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="bg-[#cddcf661] p-1 sm:p-3 sm:pt-0 rounded-md">
         <div className="p-1 sm:pl-10 sm:pr-10 md:pl-16 md:pr-16">
         
            <div className="p-1 sm:p-2 sm:pt-2 md:p-3 md:pt-2">
@@ -94,9 +104,9 @@ function features() {
           </div>
         </div>
 
-        <div>
-        <p className="sm:p-2 sm:mt-3 rounded-md  text-4xl font-bold text-center text-white bg-[#25335b]">Model Input Parameters </p>
-        <table className="w-full border-collapse border border-[#413b3b] table-auto">
+        <div >
+        <p data-aos="fade-up" className="sm:p-2 sm:mt-3 rounded-md  text-4xl font-bold text-center text-white bg-[#25335b]">Model Input Parameters </p>
+        <table data-aos="fade-up" className="w-full border-collapse border border-[#413b3b] table-auto">
   <thead >
     <tr className="bg-[#4d51da]">
       <th  className="text-2xl font-semibold border border-[#413b3b] text-white">Parameter</th>
@@ -232,21 +242,21 @@ function features() {
 
         </div>
 
-        <div>
+        <div data-aos="fade-up" >
             <p className="sm:p-2 sm:mt-3  rounded-md   text-4xl font-bold text-center text-white bg-[#25335b]">Model Results</p>
-            <div className="">
+            <div data-aos="fade-up" className="">
               <div className="pt-1 md:pt-3 bg-[#cddcf661] rounded-md">
-              <p className="text-3xl font-bold text-center">Predicted vs Real Generated Power Comparison</p>
-              <img className="mix-blend-multiply" src="./generated_power_comparison_plot.png" alt="Predicted vs Real Generated Power Comparison" />
+              <p className="text-3xl font-bold text-center">Comparison between Predicted and Real Generated Power.</p>
+              <img className="mix-blend-multiply" src="./generated_power_comparison_plot_new.png" alt="Comparison between Predicted and Real Generated Power." />
               </div>
             </div>
-            <div className="sm:pt-2   md:pt-3 ">
+            <div data-aos="fade-up" className="sm:pt-2   md:pt-3 ">
               <div className="pt-1 md:pt-3 bg-[#cddcf661] rounded-md">
-              <p className="text-3xl font-bold text-center">Solar Azimuth vs. Predicted and Real Generated Power</p>
+              <p className="text-3xl font-bold text-center">Comparison of Solar Azimuth with Predicted and Real Generated Power.</p>
               <img className="mix-blend-multiply" src="./generated_power_comparison_vs_solar_azimuth_plot.png" alt="Solar Azimuth vs. Predicted and Real Generated Power" />
               </div>
             </div>
-            <div className="sm:pt-2   md:pt-3 ">
+            <div data-aos="fade-up" className="sm:pt-2   md:pt-3 ">
               <div className="pt-1 md:pt-3 bg-[#cddcf661] rounded-md">
               <p className="text-3xl font-bold text-center">Correlation Heatmap: Understanding Relationships in the Dataset</p>
               <p className="p-1 sm:pl-10 sm:pr-10 md:pl-16 md:pr-16">
@@ -255,11 +265,11 @@ A heatmap is a graphical representation of data where individual values containe
               </div>
             </div>
         </div>
-        <div>
+        <div data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <p className="sm:p-2 sm:mt-3  rounded-md   text-4xl font-bold text-center text-white bg-[#25335b]">Model statistics</p>
             
             <div className="pt-1 md:pt-3 bg-[#cddcf661] rounded-md">
-            <div className="p-1 sm:pl-10 sm:pr-10 md:pl-16 md:pr-16">
+            <div data-aos="fade-up" className="p-1 sm:pl-10 sm:pr-10 md:pl-16 md:pr-16">
               <p><span className="font-semibold text-2xl">R-squared (R2) score : </span>The R-squared (R2) score is a metric used in regression analysis to assess how well a model's predictions align with the observed data. Ranging from 0 to 1, a higher R2 indicates a better fit, with 1 representing a perfect fit and 0 indicating no improvement over a mean-based model. The score quantifies the proportion of variance in the dependent variable explained by the independent variables. It is valuable for comparing models and assessing their predictive power. However, limitations exist, and complementary metrics should be considered for a comprehensive evaluation of regression models.</p>
               <p className="font-semibold text-2xl pt-1 sm:pt-2 md:pt-3">Mean of Test Set:</p>
               <ul>
@@ -290,7 +300,7 @@ A heatmap is a graphical representation of data where individual values containe
 </ul>
 
               </div>
-        <div className="pt-1 pb-1 sm:pt-2 sm:pb-2 md:pt-5 md:pb-3 sm:pl-10 sm:pr-20 md:pl-16 md:pr-32">      
+        <div data-aos="fade-up" className="pt-1 pb-1 sm:pt-2 sm:pb-2 md:pt-5 md:pb-3 sm:pl-10 sm:pr-20 md:pl-16 md:pr-32">      
               <table className=" w-full border-collapse border border-[#413b3b] table-auto">
   <thead >
     <tr className="bg-[#4d51da]">
@@ -326,12 +336,12 @@ A heatmap is a graphical representation of data where individual values containe
     </tbody>
     </table>
     </div>
-    <div className="p-1 sm:pl-10 sm:pr-10 md:pl-16 md:pr-16">
+    <div data-aos="fade-up" className="p-1 sm:pl-10 sm:pr-10 md:pl-16 md:pr-16">
 
     <p>
     <span className="font-bold text-2xl">Feature importance : </span>Feature importance is a concept in machine learning that quantifies the contribution of each input variable (feature) to the model's predictive performance. It helps identify the most influential features in making accurate predictions. Techniques such as tree-based models (e.g., decision trees, random forests) and algorithms like permutation importance are commonly used to assess feature importance. High importance values suggest that a feature has a significant impact on the model's ability to make accurate predictions, aiding in understanding the key drivers behind the model's decision-making process. Feature importance is valuable for feature selection, model interpretation, and enhancing overall model understanding.
     </p>
-    <div className="md:pr-16 sm:pr-10 pt-1 sm:pt-2 md:pt-4 pb-1 sm:pb-2 md:pb-4">
+    <div data-aos="fade-up" className="md:pr-16 sm:pr-10 pt-1 sm:pt-2 md:pt-4 pb-1 sm:pb-2 md:pb-4">
     <table className=" w-full border-collapse border border-[#413b3b] table-auto">
   <thead >
     <tr className="bg-[#4d51da]">

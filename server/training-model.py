@@ -30,8 +30,8 @@ y_train_scaled = sc_y.fit_transform(y_train)
 y_test_scaled = sc_y.transform(y_test)
 
 # Save the trained scalers using joblib
-joblib.dump(sc_X, 'scaler_X.pkl')
-joblib.dump(sc_y, 'scaler_y.pkl')
+joblib.dump(sc_X, 'scaler-x.pkl')
+joblib.dump(sc_y, 'scaler-y.pkl')
 
 # Creating Neural Network Architecture
 model = tf.keras.Sequential([
@@ -45,4 +45,5 @@ model.compile(loss='mse', optimizer='adam', metrics=['RootMeanSquaredError'])
 hist = model.fit(X_train_scaled, y_train_scaled, batch_size=32, validation_data=(X_test_scaled, y_test_scaled), epochs=150, verbose=2)
 
 # Save the trained model
-model.save('solar_power_model.keras')
+model.save('solar-power-model-new.keras')
+

@@ -7,15 +7,15 @@ import joblib
 def predict(input_data):
     try:
         # Load the trained model
-        loaded_model = tf.keras.models.load_model('solar_power_model.keras')
+        loaded_model = tf.keras.models.load_model('solar-power-model.h5')
 
         # Load the StandardScaler used during training
         sc_X = StandardScaler()
         sc_y = StandardScaler()
 
         # Load the scalers from a file or another saved source
-        sc_X_filename = 'scaler_X.pkl'
-        sc_y_filename = 'scaler_y.pkl'
+        sc_X_filename = 'scaler-x.pkl'
+        sc_y_filename = 'scaler-y.pkl'
 
         sc_X = joblib.load(sc_X_filename)
         sc_y = joblib.load(sc_y_filename)

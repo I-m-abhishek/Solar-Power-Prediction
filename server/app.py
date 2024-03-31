@@ -1,6 +1,6 @@
 # server.py
 from flask import Flask, request, jsonify
-from predict_model import predict
+from predictmodel import predict
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
@@ -9,13 +9,18 @@ def make_prediction():
     try:
         data = request.json
         input_data = data['input_data']
-
+        
         # Call the predict function from predict_model.py
         prediction = predict(input_data)
 
         return jsonify({'prediction': prediction})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@app.route('/')
+def home():
+    return "Hello Home"
+
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5000)
+    app.run(host="0.0.0.0")
